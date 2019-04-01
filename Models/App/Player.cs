@@ -6,6 +6,12 @@ namespace golfCard.Models {
 
     public List<int> Scores { get; private set; }
 
+    public void PlayerScores () {
+      Scores.ForEach (s => {
+        System.Console.Write ($"{s}, ");
+      });
+      System.Console.WriteLine ("\n");
+    }
     public void AddScore (int score) {
       Scores.Add (score);
     }

@@ -8,7 +8,7 @@ namespace golfCard.Models {
       Players.Add (new Player (name));
     }
 
-    public List<Player> WinStatus () {
+    public void WinStatus () {
       List<Player> Winner = new List<Player> ();
       int highest = Players[0].Total ();
       Winner.Add (Players[0]);
@@ -22,7 +22,16 @@ namespace golfCard.Models {
           highest = Players[i].Total ();
         }
       }
-      return Winner;
+      // Declares winner
+      Winner.ForEach (w => {
+        System.Console.Write ($@"{w.Name} ");
+      });
+      if (Winner.Count > 1) {
+        System.Console.Write ("have tied");
+      } else {
+        System.Console.Write ("is the winner");
+      }
+      System.Console.WriteLine ("\n");
     }
 
     public List<Course> Courses { get; private set; }
@@ -33,7 +42,11 @@ namespace golfCard.Models {
 
     public Game () {
       Players = new List<Player> ();
-      Courses = new List<Course> (); { new Course ("Nine", 9, 30); } { new Course ("Eighteen", 18, 60) }
+      Courses = new List<Course> ();
+      Course nine = new Course ("Nine", 9, 30);
+      Course eighteen = new Course ("Eighteen", 18, 60);
+      Courses.Add (nine);
+      Courses.Add (eighteen);
     }
   }
 }
