@@ -10,6 +10,14 @@ namespace golfCard.Models {
       Scores.Add (score);
     }
 
+    public int Total () {
+      int total = 0;
+      foreach (int score in Scores) {
+        total += score;
+      }
+      return total;
+    }
+
     public Player (string name) {
       Name = name;
       Scores = new List<int> ();
